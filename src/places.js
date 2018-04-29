@@ -41,13 +41,16 @@ export default class Places {
 
 		otherGeo.sort((a, b) => a.name - b.name);
 
-		const output = [
-			{ name: 'Utilities', places: this.utilityPlaces },
-			{ name: 'Others', places: otherGeo },
-		];
+		const output = [];
 
 		if (nearest.length)
-			output.unshift({ name: 'Nearest', places: nearest });
+			output.push({ name: 'Nearest', places: nearest });
+
+		if (this.utilityPlaces.length)
+			output.push({ name: 'Utilities', places: this.utilityPlaces });
+
+		if (otherGeo.length)
+			output.push({ name: 'Others', places: otherGeo });
 
 		return output;
 	}
