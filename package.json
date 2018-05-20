@@ -6,6 +6,7 @@
     "build": "webpack"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.47",
     "geolib": "^2.0.24"
   },
   "devDependencies": {
