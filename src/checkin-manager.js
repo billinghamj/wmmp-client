@@ -116,13 +116,14 @@ export default class CheckinManager {
 	async _sendCheckin(checkin: Checkin): Promise<void> {
 		const encodedTeamId = encodeURIComponent(this._teamId);
 		const path = `/api/monopoly/teams/${encodedTeamId}/checkin`;
+		const body = JSON.encode(transformCheckin(checkin));
 
 		const response = await fetch(path, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
 			},
-			body: JSON.encode(checkin),
+			body,
 		});
 
 		if (!response.ok)
@@ -155,5 +156,19 @@ async function parseFile(file: File): Promise<ParsedFile> {
 		fileName: file.name,
 		mimeType: file.type,
 		base64Data: base64,
+	};
+}
+
+function transformCheckin(checkin: Checkin): {} {
+	return {
+		idempotency_key: checkin.idempotencyKey,
+		location_id: checkin.placeId,
+		client_time: checkin.dateTime,
+		client_location: checkin.location,
+		photo: {
+			file_name: checkin.photo.fileName,
+			mime_type: checkin.photo.mimeType,
+			base64_data: checkin.photo.base64Data,
+		},
 	};
 }
