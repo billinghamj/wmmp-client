@@ -152,7 +152,7 @@ async function parseFile(file: File): Promise<ParsedFile> {
 	const base64 = result.substr(idx);
 
 	return {
-		name: file.name,
+		fileName: file.name,
 		mimeType: file.type,
 		base64Data: base64,
 	};

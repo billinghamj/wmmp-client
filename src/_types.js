@@ -25,7 +25,7 @@ export type ParsedFile = {
 export type Checkin = {
 	clientKey: string;
 	placeId: number;
-	location: Location|null;
 	dateTime: string; // ISO8601
+	location: Location|null;
 	photo: ParsedFile;
 };
