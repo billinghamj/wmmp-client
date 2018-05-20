@@ -23,7 +23,7 @@ export type ParsedFile = {
 };
 
 export type Checkin = {
-	clientKey: string;
+	idempotencyKey: string;
 	placeId: number;
 	dateTime: string; // ISO8601
 	location: Location|null;

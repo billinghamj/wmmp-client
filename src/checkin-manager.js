@@ -67,7 +67,7 @@ export default class CheckinManager {
 		const photo = await parseFile(file);
 
 		this._queuedCheckins.push({
-			clientKey: `${dateTime}-${randomStr}`,
+			idempotencyKey: `${dateTime}-${randomStr}`,
 			placeId: place.id,
 			location,
 			dateTime,
