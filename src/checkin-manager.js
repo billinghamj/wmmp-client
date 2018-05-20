@@ -116,7 +116,7 @@ export default class CheckinManager {
 	async _sendCheckin(checkin: Checkin): Promise<void> {
 		const encodedTeamId = encodeURIComponent(this._teamId);
 		const path = `/api/monopoly/teams/${encodedTeamId}/checkin`;
-		const body = JSON.encode(transformCheckin(checkin));
+		const body = JSON.stringify(transformCheckin(checkin));
 
 		const response = await fetch(path, {
 			method: 'POST',
