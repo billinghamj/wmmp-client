@@ -139,9 +139,12 @@ function localStorage(): Storage {
 }
 
 async function parseFile(file: File): Promise<ParsedFile> {
-	const fr = new FileReader();
+	if (!file)
+		throw new Error('invalid file');
 
 	const result = await new Promise((resolve, reject) => {
+		const fr = new FileReader();
+
 		fr.onerror = e => reject(e.target.error);
 		fr.onload = () => resolve(fr.result);
 
