@@ -1,8 +1,11 @@
-/* global window, fetch, Promise, Storage, File, FileReader */
+/* global window, Promise, Storage, File, FileReader */
 
+import jsonClient from 'json-client';
 import { Checkin, Location, ParsedFile, Place } from './_types';
 
 type Status = 'up_to_date' | 'waiting' | 'sending';
+
+const api = jsonClient('/api/monopoly');
 
 export default class CheckinManager {
 	_teamId: number;
@@ -114,20 +117,10 @@ export default class CheckinManager {
 	}
 
 	async _sendCheckin(checkin: Checkin): Promise<void> {
-		const encodedTeamId = encodeURIComponent(this._teamId);
-		const path = `/api/monopoly/teams/${encodedTeamId}/checkin`;
-		const body = JSON.stringify(transformCheckin(checkin));
+		const path = `teams/${encodeURIComponent(this._teamId)}/checkin`;
+		const body = transformCheckin(checkin);
 
-		const response = await fetch(path, {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json',
-			},
-			body,
-		});
-
-		if (!response.ok)
-			throw new Error('checkin request failed');
+		await api('post', path, null, body);
 	}
 }
 

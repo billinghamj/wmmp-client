@@ -8,6 +8,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.47",
     "geolib": "^2.0.24",
+    "json-client": "^0.9.2",
     "vue": "^2.5.16"
   },
   "devDependencies": {
