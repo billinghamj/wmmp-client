@@ -15,3 +15,17 @@ export type Place = {
 	category: Category;
 	location: Location|null;
 };
+
+export type ParsedFile = {
+	fileName: string;
+	mimeType: string;
+	base64Data: string;
+};
+
+export type Checkin = {
+	clientKey: string;
+	placeId: number;
+	location: Location|null;
+	dateTime: string; // ISO8601
+	photo: ParsedFile;
+};
