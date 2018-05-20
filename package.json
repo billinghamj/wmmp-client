@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.47",
-    "geolib": "^2.0.24"
+    "geolib": "^2.0.24",
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.47",

@@ -1,3 +1,4 @@
 import '@babel/polyfill';
-export { default as CheckinManager } from './checkin-manager';
-export { default as Places } from './places';
+import CheckinManager from './checkin-manager';
+import Places from './places';
+import Vue from 'vue';
